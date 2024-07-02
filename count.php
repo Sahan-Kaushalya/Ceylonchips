@@ -59,4 +59,29 @@
     </div>
   </section>
 
+  <script>
+    function animateValue(id, start, end, duration) {
+      var obj = document.getElementById(id);
+      var range = end - start;
+      var current = start;
+      var increment = end > start ? 1 : -1;
+      var stepTime = Math.abs(Math.floor(duration / range));
+      var timer = setInterval(function () {
+        current += increment;
+        obj.textContent = current;
+        if (current == end) {
+          clearInterval(timer);
+        }
+      }, stepTime);
+    }
 
+    document.addEventListener('DOMContentLoaded', function () {
+      // Set up counters
+      animateValue("clientsCounter", 0, 20, 10000); // 2 seconds
+      animateValue("projectsCounter", 0, 10, 10000); // 2 seconds
+      animateValue("hoursCounter", 0, 450, 10000); // 2 seconds
+      animateValue("workersCounter", 0, 12, 10000); // 2 seconds
+    });
+  </script>
+</body>
+</html>
